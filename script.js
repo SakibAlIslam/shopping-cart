@@ -47,15 +47,28 @@ function handleProductChange(productName, isIncrease, prices) {
 
 
 function calculateTotal(){
-    const phoneInput = document.getElementById('phone-count').value;
-    const phoneCount = parseInt(phoneInput);
-    const caseInput = document.getElementById('case-count').value;
-    const caseCount = parseInt(caseInput);
+    // const phoneInput = document.getElementById('phone-count').value;
+    // const phoneCount = parseInt(phoneInput);
+    // const caseInput = document.getElementById('case-count').value;
+    // const caseCount = parseInt(caseInput);
+    const phoneCount = getInputValue('phone-count');
+    const caseCount = getInputValue('case-count');
     const totalPrice = (phoneCount * 1219) + (caseCount * 59)
     document.getElementById('total-price').innerText = '$' + totalPrice;
+
+    const tax = Math.round(totalPrice * 0.1);
+    document.getElementById('tax-total').innerText = '$' + tax;
+
+    const grandTotal = totalPrice + tax;
+    //const grandTotalAmount = parseFloat(grandTotal);
+    document.getElementById('grand-total').innerText =  '$' + grandTotal;
 }
 
-
+function getInputValue(product) {
+    const productInput = document.getElementById(product).value;
+    const productCount = parseInt(productInput);
+    return productCount; 
+}
 
 
 
