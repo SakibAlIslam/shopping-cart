@@ -1,6 +1,7 @@
 const plusBtn = document.getElementById('plusBtn').addEventListener(
     'click', ()=>{
         handleProductChange('phone', true, 1219);
+        calculateTotal();
     }
 )
 
@@ -8,6 +9,7 @@ const plusBtn = document.getElementById('plusBtn').addEventListener(
 const minusBtn = document.getElementById('minusBtn').addEventListener(
     'click', ()=>{
         handleProductChange('phone', false, 1219);
+        calculateTotal();
     }
 )
 
@@ -15,12 +17,14 @@ const minusBtn = document.getElementById('minusBtn').addEventListener(
 const caseIncrease = document.getElementById('case-increase').addEventListener(
     'click', ()=>{
         handleProductChange('case', true, 59);
+        calculateTotal()
     }
 )
 
 const caseDecrease = document.getElementById('case-decrease').addEventListener(
     'click', ()=>{
         handleProductChange('case', false, 59);
+        calculateTotal()
     }
 )
 
@@ -42,7 +46,14 @@ function handleProductChange(productName, isIncrease, prices) {
 
 
 
-
+function calculateTotal(){
+    const phoneInput = document.getElementById('phone-count').value;
+    const phoneCount = parseInt(phoneInput);
+    const caseInput = document.getElementById('case-count').value;
+    const caseCount = parseInt(caseInput);
+    const totalPrice = (phoneCount * 1219) + (caseCount * 59)
+    document.getElementById('total-price').innerText = '$' + totalPrice;
+}
 
 
 
