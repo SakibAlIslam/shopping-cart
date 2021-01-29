@@ -1,28 +1,60 @@
-//plus button handler
 const plusBtn = document.getElementById('plusBtn').addEventListener(
     'click', ()=>{
-        const productQuantity = getInputs('productQuantity');
-        updateValues('productQuantity',productQuantity + 1);
+        handleProductChange(true);
     }
 )
 
 //minus button handler
 const minusBtn = document.getElementById('minusBtn').addEventListener(
     'click', ()=>{
-        const productQuantity = getInputs('productQuantity');
-        updateValues('productQuantity', productQuantity - 1);
+        handleProductChange(false);
     }
 )
 
-
-function getInputs(id) {
-    const input = document.getElementById(id).value;
-    const numberInput = parseFloat(input);
-    return numberInput;
+function handleProductChange(isIncrease) {
+    const caseInput = document.getElementById('case-count');
+        const caseCount = parseInt(caseInput.value);
+        let caseNewCount = caseCount;
+        if (isIncrease == true) {
+            caseNewCount = caseCount + 1;
+        }
+        if (isIncrease == false && caseCount > 0) {
+            caseNewCount = caseCount - 1;
+        }
+        caseInput.value = caseNewCount;
+        const caseTotal = caseNewCount * 1219;
+        document.getElementById('caseTotal').innerText = '$' + caseTotal;
 }
 
-function updateValues(id, productQuantity) {
-    if (productQuantity >= 0) {
-        document.getElementById(id).value = productQuantity;
-    }
-}
+
+
+
+
+
+
+
+
+
+//plus button handler
+// const plusBtn = document.getElementById('plusBtn').addEventListener(
+//     'click', ()=>{
+//         const caseInput = document.getElementById('case-count');
+//         const caseCount = parseInt(caseInput.value);
+//         const caseNewCount = caseCount + 1;
+//         caseInput.value = caseNewCount;
+//         const caseTotal = caseNewCount * 1219;
+//         document.getElementById('caseTotal').innerText = '$' + caseTotal;
+//     }
+// )
+
+// //minus button handler
+// const minusBtn = document.getElementById('minusBtn').addEventListener(
+//     'click', ()=>{
+//         const caseInput = document.getElementById('case-count');
+//         const caseCount = parseInt(caseInput.value);
+//         const caseNewCount = caseCount - 1;
+//         caseInput.value = caseNewCount;
+//         const caseTotal = caseNewCount * 1219;
+//         document.getElementById('caseTotal').innerText = '$' + caseTotal;
+//     }
+// )
